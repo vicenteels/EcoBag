@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Raleway", sans-serif;
+    --espaço-margem: 60px 120px;
+    --cor-de-fundo: #3AD5DF, #2CE392, #44D7E4;
+    --verde: #00a274;
+    --azul_escuro: #012241;
+    --rosa: #febfcc;
+}
+
+body {
+    background: linear-gradient(to right, #2CE392, #44D7E4, #90ee90);
+    background-size: 400%, 400%;
+    animation: animate-background 10s infinite ease-in-out;
+}
+
+@keyframes animate-background {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+@keyframes animate {
+
+    0%,
+    10%,
+    100% {
+        width: 0;
+    }
+
+    70%,
+    90% {
+        width: 100%;
+    }
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+header {
+    padding: 0 120px 0 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    height: 25%;
+}
+
+.logoeco {
+    height: 100%;
+}
+
+.logoeco img {
+    height: 80%;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav ul li button {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+
+nav ul li button {
+    background-color: var(--azul_escuro);
+    color: white;
+    border-radius: 20px;
+    padding: 12px 20px 12px 20px;
+}
+
+.main {
+    height: 55%;
+    display: flex;
+    gap: 50px;
+    padding: var(--espaço-margem);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.main-col1 {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.main-col1 img {
+    padding-top: 20px;
+    height: 136%;
+}
+
+.main-col2 {
+    height: 100%;
+    width: 50%;
+}
+
+.main-col2 h1 {
+    width: 100%;
+    color: white;
+    font-size: 60px;
+}
+
+.main h1#amarelo {
+    color: var(--azul_escuro);
+    text-decoration-line: underline;
+    font-style: italic;
+    font-size: 75px;
+    -webkit-text-stroke: 0vw white;
+    border-right: 2px solid white;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+}
+
+.main-col2 h1#tit_topo {
+    width: 100%;
+    padding-top: 30px;
+}
+
+.main-col2 p {
+    color: white;
+    font-weight: bold;
+    font-size: 23.5px;
+    padding-top: 15px;
+    padding-bottom: 8px;
+}
+
+footer {
+    height: 20%;
+    width: 100%;
+    background-color: white;
+}

@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+        /* Começa fora da tela */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        /* Termina na posição original */
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Raleway", sans-serif;
+    --verde: #00a274;
+    --azul_escuro: #012241;
+    --rosa: #febfcc;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #f9f1e6;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+nav ul {
+    height: 80px;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 55%;
+    border-radius: 40px;
+    position: fixed;
+    margin-top: 20px;
+    margin-right: 40px;
+    box-shadow: 0px 0px 93px -16px rgba(0, 0, 0, 0.33);
+    z-index: 1000;
+    transition: transform 1.0s ease;
+}
+
+.navbar.hide {
+    transform: translateY(-130%);
+    /* Ajuste este valor conforme a altura do seu navbar */
+}
+
+nav ul li {
+    list-style: none;
+}
+
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li a:hover {
+    color: var(--verde);
+    font-weight: 600;
+}
+
+.botao-sair {
+    color: var(--verde);
+    border: none;
+    background-color: white;
+    font-weight: 700;
+}
+
+.botao-sair:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.botao-perfil {
+    color: white;
+    font-weight: 500;
+    background-color: var(--verde);
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    width: 8rem;
+}
+
+.botao-perfil:hover {
+    color: var(--verde);
+    background-color: white;
+    border: 2px solid var(--verde);
+    font-weight: 800;
+
+}
+
+main {
+    height: 85%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 90px;
+}
+
+.esquerda {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 40px;
+    padding-right: 30px;
+}
+
+.saldo-pontos {
+    height: 40%;
+    width: 80%;
+    background: linear-gradient(45deg, #42ef99, #089451);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.saldo-pontos h2 {
+    font-size: 30px;
+    color: white;
+}
+
+#pontos {
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.etiqueta {
+    height: 40%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.etiqueta a img {
+    height: 100%;
+    width: 100%;
+}
+
+.direita {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.historico-pontos {
+    height: 85%;
+    width: 70%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.titulo-historico {
+    height: 10%;
+    width: 80%;
+    align-content: center;
+    padding-left: 50px;
+}
+
+.titulo-historico h2 {
+    font-size: 20px;
+}
+
+.premio-box {
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.premio-box-icon {
+    height: 70%;
+}
+
+.linha {
+    height: 0.5px;
+    width: 60%;
+    background-color: rgb(183, 179, 179);
+}
+
+.saldo-pontos,
+.etiqueta,
+.historico-pontos {
+    opacity: 0;
+}
+
+.saldo-pontos,
+.etiqueta {
+    animation: entrarEsquerda 3s ease forwards;
+}
+
+@keyframes entrarEsquerda {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.historico-pontos {
+    animation: entrarDireita 3s ease forwards;
+}
+
+@keyframes entrarDireita {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

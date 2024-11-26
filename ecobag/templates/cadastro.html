@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../static/css/cadastro.css" />
+  <!-- <link rel="stylesheet" href="../login/login.html"> -->
+
+  <title>Cadastro</title>
+</head>
+
+<body>
+  <div class="box">
+    <div class="boxcadastro">
+      <div class="texto-titulo">Cadastro</div>
+      <div class="inputs-separados">
+        <div class="inputs-box">
+          <div class="inputs">
+            <span>NOME</span>
+            <input type="text" id="nome" placeholder="Seu nome"/>
+          </div>
+
+          <div class="inputs">
+            <span>SEU APELIDO:</span>
+            <input type="text" placeholder="Como vamos te chamar?" id="apelido"/>
+          </div>
+        </div>
+
+        <div class="inputs-box">
+          <div class="inputs">
+            <span>SENHA</span>
+            <input type="password" placeholder="Senha" id="senha"/>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="voltar-login">
+        <button id="register-button" class="button" onclick="showLoading()">Cadastrar</button>
+        <span>
+          Já possui uma conta?
+          <a href="/login">Login</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- <script src="./js/cadastro.js"></script> -->
+<script src="../static/js/loading.js"></script>
+
+</html>

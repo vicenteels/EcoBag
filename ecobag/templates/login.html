@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <title>Login</title>
+</head>
+<body>
+    <section>
+        <form action="" method="post">
+            <div class="container-text">
+                <h1>Login</h1>
+                <span>Entre para continuar</span>
+            </div>
+    
+            <div class="inputs">
+                <span>APELIDO</span>
+                <input type="text" name="apelido" placeholder="Seu apelido" id="apelido">
+    
+                <span>SENHA</span>
+                <input type="password" placeholder="Sua senha" id="password">
+    
+                <button type="button" class="recuperar-senha" id="recover-password-button">Recuperar Senha</button>
+            </div>
+    
+            <div class="container-botao">
+                <button type="button" id="login-button" onclick="showLoading()">Entrar</button> 
+                <button type="button" onclick="cadastrar()">Cadastre-se</button>
+            </div>
+        </form>
+
+        <div class="logo"><img src="../static/images/logo-vetorizada.png" alt=""></div>
+    </section>
+    
+</body>
+
+<script src="../static/js/loading.js"></script>
+
+
+
+</html>
