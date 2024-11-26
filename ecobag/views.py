@@ -1,24 +1,39 @@
-from django.shortcuts import render
-# from .forms import UsuarioModelForm
+from django.shortcuts import render, redirect
+from .forms import UsuarioModelForm
 from django.contrib import messages
+from .models import Usuario, Descarte, Pontuacao
 
 def index(request):
     return render(request, 'index.html')
 
 def cadastro(request):
-    # if request.method == 'POST':
-    #     form = UsuarioModelForm(request.POST, request.FILES)
-    #     if form.is_valid():
-    #         form.save()
-    #         messages.success(request, 'Usuario cadastrado com sucesso')
-    #     else: 
-    #         messages.success(request, 'Erro ao cadastrar usuário')
-    # else:
-    #     form = UsuarioModelForm()
-    #     context = {
-    #         'form' : form
-    #     }
-    return render(request, 'cadastro.html')
+    if request.method == 'POST':
+        form = UsuarioModelForm(request.POST, request.FILES)
+        if form.is_valid():
+            usuario = form.save()  # Salva o usuário e retorna a instância
+            messages.success(request, 'Usuário cadastrado com sucesso')
+
+            if usuario.tipo_usuario == 'DESCARTADOR':
+                print("Redirecionando para homeusu")  # Debug
+                return redirect('homeusu')
+            elif usuario.tipo_usuario == 'CATADOR':
+                print("Redirecionando para homecat")  # Debug
+                return redirect('homecat')
+
+            # Adiciona mensagem de erro genérico
+            messages.error(request, 'Erro ao determinar o tipo de usuário')
+
+            print(f"Dados enviados: {request.POST}")
+
+        else:
+            messages.error(request, 'Erro ao cadastrar usuário')
+    else:
+        form = UsuarioModelForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'cadastro.html', context)
 
 def login(request):
     return render(request, 'login.html')

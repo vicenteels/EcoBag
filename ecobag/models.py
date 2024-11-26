@@ -2,7 +2,7 @@ from django.db import models
 
 
 TIPO_USUARIO_CHOICES = [
-    ('DESCARATADOR', 'Descartador'),
+    ('DESCARTADOR', 'Descartador'),
     ('CATADOR', 'Catador'),
 ]
 
