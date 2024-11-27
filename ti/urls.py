@@ -9,5 +9,5 @@ urlpatterns = [
     path('homedesc/', homeusu, name='homeusu'),
     path('login/', login, name='login'),
     path('cadastro/', cadastro, name='cadastro'),
-    path('perfil/', perfilusu, name='perfilusu')
+    path('perfil/', perfilusu, name='perfilusu'),
 ]

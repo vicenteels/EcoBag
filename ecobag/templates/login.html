@@ -3,38 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/login.css">
     <title>Login</title>
+    <link rel="stylesheet" href="../static/css/login.css">
 </head>
 <body>
-    <section>
-        <form method="POST" action="{% url 'login' %}">
+    <main>
+        <h1>Login</h1>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
+            <label for="username">Apelido</label>
+            <input type="text" id="username" name="username" placeholder="Seu apelido" required>
 
-    
-            <div class="inputs">
-                <span>APELIDO</span>
-                <input type="text" name="username" placeholder="Seu apelido" id="apelido">
-    
-                <span>SENHA</span>
-                <input type="text" name="senha" placeholder="Sua senha" id="password">
-    
-                <button type="button" class="recuperar-senha" id="recover-password-button">Recuperar Senha</button>
-            </div>
-    
-            <div class="container-botao">
-                <button type="submit" value="Logar" id="login-button" onclick="showLoading()">Entrar</button> 
-                <button type="button" onclick="cadastrar()">Cadastre-se</button>
-            </div>
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" placeholder="Sua senha" required>
+
+            <button type="submit">Entrar</button>
         </form>
-
-        <div class="logo"><img src="../static/images/logo-vetorizada.png" alt=""></div>
-    </section>
-    
+        <button onclick="cadastro()">Cadastre-se</button>
+    </main>
 </body>
 
-<script src="../static/js/loading.js"></script>
-
-
-
+<script>
+    function cadastro(){
+        window.location.href = "{% url 'cadastro' %}"
+    }
+</script>
 </html>

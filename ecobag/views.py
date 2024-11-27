@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login as login_django
+from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse
 from .forms import UsuarioModelForm
 from django.contrib import messages
@@ -10,54 +11,50 @@ def index(request):
 
 def cadastro(request):
     if request.method == 'POST':
-        form = UsuarioModelForm(request.POST, request.FILES)
+        form = UsuarioModelForm(request.POST)
         if form.is_valid():
-            usuario = form.save()  # Salva o usuário e retorna a instância
-            messages.success(request, 'Usuário cadastrado com sucesso')
-
+            usuario = form.save(commit=False)
+            usuario.password = usuario.password  # Salve a senha sem encriptar, ou use encriptação se necessário
+            usuario.save()
+            messages.success(request, 'Usuário cadastrado com sucesso!')
             if usuario.tipo_usuario == 'DESCARTADOR':
-                print("Redirecionando para homeusu")  # Debug
                 return redirect('homeusu')
             elif usuario.tipo_usuario == 'CATADOR':
-                print("Redirecionando para homecat")  # Debug
                 return redirect('homecat')
-
-            # Adiciona mensagem de erro genérico
-            messages.error(request, 'Erro ao determinar o tipo de usuário')
-
-            print(f"Dados enviados: {request.POST}")
-
         else:
-            messages.error(request, 'Erro ao cadastrar usuário')
+            messages.error(request, 'Erro ao cadastrar usuário. Verifique os dados informados.')
     else:
         form = UsuarioModelForm()
 
-    context = {
-        'form': form
-    }
-    return render(request, 'cadastro.html', context)
+    return render(request, 'cadastro.html', {'form': form})
 
 def login(request):
-
-    if request.method == "GET":
-        return render(request, 'login.html')
-    else:
+    if request.method == 'POST':
         username = request.POST.get('username')
         senha = request.POST.get('senha')
 
-        user = authenticate(username=username, password=senha)
+        # Autenticação personalizada
+        try:
+            user = Usuario.objects.get(username=username, password=senha)
+            if user.tipo_usuario == 'DESCARTADOR':
+                return redirect('homeusu')
+            elif user.tipo_usuario == 'CATADOR':
+                return redirect('homecat')
+        except Usuario.DoesNotExist:
+            messages.error(request, 'Apelido ou senha inválidos.')
+            return redirect('login')
 
-        if user: 
-            return HttpResponse('Autenticado')
-        else:
-            return HttpResponse('Email ou senha inválido')
+    return render(request, 'login.html')
 
+# @login_required(login_url='login/')
 def homeusu(request):
     return render(request, 'homeusu.html')
 
+# @login_required(login_url='login/')
 def homecat(request):
     return render(request, 'homecat.html')
 
+# @login_required(login_url='login/')
 def perfilusu(request):
     return render(request, 'perfilusu.html')
 

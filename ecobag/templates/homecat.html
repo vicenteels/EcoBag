@@ -15,7 +15,7 @@
             <ul id="navbar" class="navbar">
                 <li><a href="#section1">Home</a></li>
                 <li><a href="#section4">Dicas</a></li>
-                <li><button class="botao-sair" type="button" onclick="logout()">Sair</button></li>
+                <li><button class="botao-sair" type="button" onclick="sair()">Sair</button></li>
                 <li><button class="botao-perfil" type="button">Perfil</button></li>
             </ul>
         </nav>
@@ -31,5 +31,12 @@
     </main>
 
 </body>
+
+<script>
+    function sair() {
+        console.log('Função sair chamada');
+        window.location.href = "../login";
+    }
+</script>
 
 </html>

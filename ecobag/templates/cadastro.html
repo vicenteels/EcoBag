@@ -1,24 +1,38 @@
-{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    {% bootstrap_css %}
+    <link rel="stylesheet" href="../static/css/cadastro.css">
 </head>
 <body>
-    <main class="container">
+    <main>
         <h1>Cadastro</h1>
-        {% bootstrap_messages %}
-        <form action="{% url 'cadastro' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <form method="post" action="{% url 'cadastro' %}">
             {% csrf_token %}
-            {% bootstrap_form form %}
-            {% buttons %}
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
-            {% endbuttons %}
+            <label for="username">Apelido</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="tipo_usuario">Tipo de Usuário</label>
+            <select id="tipo_usuario" name="tipo_usuario" required>
+                <option value="DESCARTADOR">Descartador</option>
+                <option value="CATADOR">Catador</option>
+            </select>
+
+            <button type="submit">Cadastrar</button>
         </form>
     </main>
-{% bootstrap_javascript jquery='full' %}
 </body>
 </html>
