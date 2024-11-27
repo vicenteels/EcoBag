@@ -8,24 +8,22 @@
 </head>
 <body>
     <section>
-        <form action="" method="post">
-            <div class="container-text">
-                <h1>Login</h1>
-                <span>Entre para continuar</span>
-            </div>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+
     
             <div class="inputs">
                 <span>APELIDO</span>
-                <input type="text" name="apelido" placeholder="Seu apelido" id="apelido">
+                <input type="text" name="username" placeholder="Seu apelido" id="apelido">
     
                 <span>SENHA</span>
-                <input type="password" placeholder="Sua senha" id="password">
+                <input type="text" name="senha" placeholder="Sua senha" id="password">
     
                 <button type="button" class="recuperar-senha" id="recover-password-button">Recuperar Senha</button>
             </div>
     
             <div class="container-botao">
-                <button type="button" id="login-button" onclick="showLoading()">Entrar</button> 
+                <button type="submit" value="Logar" id="login-button" onclick="showLoading()">Entrar</button> 
                 <button type="button" onclick="cadastrar()">Cadastre-se</button>
             </div>
         </form>
