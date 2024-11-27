@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http.response import HttpResponse
 from .forms import UsuarioModelForm
 from django.contrib import messages
 from .models import Usuario, Descarte, Pontuacao
@@ -36,7 +37,19 @@ def cadastro(request):
     return render(request, 'cadastro.html', context)
 
 def login(request):
-    return render(request, 'login.html')
+
+    if request.method == "GET":
+        return render(request, 'login.html')
+    else:
+        username = request.POST.get('username')
+        senha = request.POST.get('senha')
+
+        user = authenticate(username=username, password=senha)
+
+        if user: 
+            return HttpResponse('Autenticado')
+        else:
+            return HttpResponse('Email ou senha inválido')
 
 def homeusu(request):
     return render(request, 'homeusu.html')
