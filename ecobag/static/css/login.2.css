@@ -1,0 +1,16 @@
+.box-input {
+    gap: 10px;
+}
+
+.box-input input {
+    padding-left: 20px;
+}
+
+form {
+    height: 60%;
+}
+
+.box-buttons {
+    padding-top: 40px;
+    gap: 30px;
+}
