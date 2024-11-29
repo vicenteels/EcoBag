@@ -1,38 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="../static/css/cadastro.css">
+    <link rel="stylesheet" href="../static/css/cadastro2.css">
 </head>
+
 <body>
     <main>
         <h1>Cadastro</h1>
         {% if messages %}
-            {% for message in messages %}
-                <div class="alert">{{ message }}</div>
-            {% endfor %}
+        {% for message in messages %}
+        <div class="alert">{{ message }}</div>
+        {% endfor %}
         {% endif %}
         <form method="post" action="{% url 'cadastro' %}">
             {% csrf_token %}
-            <label for="username">Apelido</label>
-            <input type="text" id="username" name="username" required>
+            <div class="box-input">
+                <label for="username">Apelido</label>
+                <input type="text" id="username" name="username" placeholder="Seu apelido" required>
+            </div>
 
-            <label for="name">Nome</label>
-            <input type="text" id="name" name="name" required>
+            <div class="box-input">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+            </div>
 
-            <label for="password">Senha</label>
-            <input type="password" id="password" name="password" required>
+            <div class="box-input">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Senha" required>
+            </div>
 
-            <label for="tipo_usuario">Tipo de Usuário</label>
-            <select id="tipo_usuario" name="tipo_usuario" required>
-                <option value="DESCARTADOR">Descartador</option>
-                <option value="CATADOR">Catador</option>
-            </select>
+            <div class="box-input">
+                <label for="tipo_usuario">Tipo de Usuário</label>
+                <select id="tipo_usuario" name="tipo_usuario" required>
+                    <option value="DESCARTADOR">Descartador</option>
+                    <option value="CATADOR">Catador</option>
+                </select>
+            </div>
 
-            <button type="submit">Cadastrar</button>
+            <div class="box-buttons">
+                <button type="submit">Cadastrar</button>
+                <button onclick="login()">Login</button>
+            </div>
         </form>
     </main>
+
+    <section>
+        <img src="../static/images/logo-vetorizada.png" alt="">
+    </section>
 </body>
+
+<script>
+    function login() {
+        window.location.href = "{% url 'login' %}"
+    }
+</script>
+
 </html>
