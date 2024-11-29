@@ -1,18 +1,22 @@
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    {% bootstrap_css%}
     <link rel="stylesheet" href="../static/css/login.css">
 </head>
+
 <body>
-    <main>
+    <main class="main-container">
         <h1>Login</h1>
         {% if messages %}
-            {% for message in messages %}
-                <div class="alert">{{ message }}</div>
-            {% endfor %}
+        {% for message in messages %}
+        <div class="alert">{{ message }}</div>
+        {% endfor %}
         {% endif %}
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
@@ -24,13 +28,16 @@
 
             <button type="submit">Entrar</button>
         </form>
+
         <button onclick="cadastro()">Cadastre-se</button>
     </main>
+
 </body>
 
 <script>
-    function cadastro(){
+    function cadastro() {
         window.location.href = "{% url 'cadastro' %}"
     }
 </script>
+
 </html>
