@@ -72,10 +72,17 @@
                         <tr>
                             <td>{{ descarte.nome_usuario.username }}</td>
                             <td>{{ descarte.data|date:"d/m/Y" }}</td>
+                            <td>
+                                <form action="{% url 'aprovar_reprovar_descarte' descarte.id_descarte %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" name="acao" value="aprovar">Aprovar</button>
+                                    <button type="submit" name="acao" value="reprovar">Reprovar</button>
+                                </form>
+                            </td>
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="2">Nenhuma solicitação pendente.</td>
+                            <td colspan="3">Nenhuma solicitação pendente.</td>
                         </tr>
                         {% endfor %}
                     </tbody>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from datetime import date
 from django.http.response import HttpResponse
 from .forms import UsuarioModelForm
@@ -70,17 +70,41 @@ def perfilusu(request):
         username_atual = request.POST.get('username')  # Obtém o nome de usuário do formulário
         data = request.POST.get('data')  # Obtém a data do formulário
 
-        try:
-            usuario_atual = Usuario.objects.get(username=username_atual)  # Busca o usuário no banco de dados
+        # Obtém o nome de usuário da sessão
+        username_sessao = request.session.get('username')
 
-            # Cria uma nova solicitação de descarte
-            novo_descarte = Descarte(nome_usuario=usuario_atual, data=data)
-            novo_descarte.save()
-            messages.success(request, "Sua solicitação de descarte foi criada com sucesso!")
-        except Usuario.DoesNotExist:
-            messages.error(request, "Usuário não encontrado.")
+        # Verifica se o nome de usuário da sessão corresponde ao nome de usuário do formulário
+        if username_sessao == username_atual:
+            try:
+                usuario_atual = Usuario.objects.get(username=username_atual)  # Busca o usuário no banco de dados
+
+                # Cria uma nova solicitação de descarte
+                novo_descarte = Descarte(nome_usuario=usuario_atual, data=data)
+                novo_descarte.save()
+                messages.success(request, "Sua solicitação de descarte foi criada com sucesso!")
+            except Usuario.DoesNotExist:
+                messages.error(request, "Usuário não encontrado.")
+        else:
+            messages.error(request, "O nome de usuário informado não corresponde ao nome de usuário da sessão.")
 
     return render(request, 'perfilusu.html')  # Redireciona para a página de perfil do usuário
 
+def aprovar_reprovar_descarte(request, id_descarte):
+    if request.method == 'POST':
+        acao = request.POST.get('acao')
+        descarte = get_object_or_404(Descarte, id_descarte=id_descarte)
+        
+        if acao == 'aprovar':
+            descarte.status_descarte = 'APROVADO'
+            descarte.nome_usuario.pontuacao_total += 100
+        elif acao == 'reprovar':
+            descarte.status_descarte = 'REPROVADO'
+        
+        descarte.save()
+        descarte.nome_usuario.save()  # Salva as alterações na pontuação do usuário
 
+        # Redireciona de volta para a página do catador
+        return redirect('homecat')  # Certifique-se de que 'homecat' é o nome correto da URL
+
+    return redirect('homecat')
 # Create your views here.

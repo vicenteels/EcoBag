@@ -11,13 +11,20 @@
         <nav>
             <ul id="navbar" class="navbar">
                 <li><a href="/homedesc">Home</a></li>
-                <li><button class="botao-sair" type="button">Sair</button></li>
+                <li><button class="botao-sair" type="button" onclick="sair()">Sair</button></li>
                 <li><button class="botao-perfil" type="button">Perfil</button></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <div class="esquerda">
             <div class="saldo-pontos">
                 <h2>Saldo de Pontos</h2>
@@ -99,7 +106,17 @@
 
     </main>
 
+
 </body>
+
+<script>
+    function sair() {
+        console.log('Função sair chamada');
+        window.location.href = "../login";
+    }
+</script>
+
+
 
 <script src="../static/js/home.js"></script>
 
