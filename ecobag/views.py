@@ -57,7 +57,10 @@ def homeusu(request):
 
 # @login_required(login_url='login/')
 def homecat(request):
-    return render(request, 'homecat.html')
+    # Filtra os descartes com status 'PENDENTE', ordenados pela data
+    descartes_pendentes = Descarte.objects.filter(status_descarte='PENDENTE').order_by('data')
+
+    return render(request, 'homecat.html', {'descartes_pendentes': descartes_pendentes})
 
 # @login_required(login_url='login/')
 

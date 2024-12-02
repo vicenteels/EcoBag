@@ -7,6 +7,41 @@
     <title>Home Catador</title>
     <link rel="stylesheet" href="../static/css/homeusu.css">
     <link rel="stylesheet" href="../static/css/homecat.css">
+
+    <style>
+        .tabela-solicitacoes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: left;
+    }
+
+    .tabela-solicitacoes th,
+    .tabela-solicitacoes td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    .tabela-solicitacoes th {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+
+    .tabela-solicitacoes tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .tabela-solicitacoes tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .tabela-solicitacoes td {
+        vertical-align: middle;
+    }
+
+    </style>
 </head>
 
 <body>
@@ -24,8 +59,29 @@
     <main>
         <section>
             <div class="esquerda">
-                <h1>aqui vai a lista</h1>
+                <h1>Solicitações de Descarte Pendentes</h1>
+                <table class="tabela-solicitacoes">
+                    <thead>
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for descarte in descartes_pendentes %}
+                        <tr>
+                            <td>{{ descarte.nome_usuario.username }}</td>
+                            <td>{{ descarte.data|date:"d/m/Y" }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">Nenhuma solicitação pendente.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
+            
             <div class="direita"><img src="../static/images/logo-vetorizada.png" alt=""></div>
         </section>
     </main>
