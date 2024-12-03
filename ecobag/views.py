@@ -66,12 +66,24 @@ def homecat(request):
 
 
 def perfilusu(request):
+    # Inicializa a pontuação como 0
+    pontos = 0
+
+    # Obtém o nome de usuário da sessão
+    username_sessao = request.session.get('username')
+
+    if username_sessao:
+        try:
+            # Busca o usuário no banco de dados usando o nome de usuário da sessão
+            usuario = Usuario.objects.get(username=username_sessao)
+            pontos = usuario.pontuacao_total  # Obtém a pontuação total do usuário
+        except Usuario.DoesNotExist:
+            # Se o usuário não for encontrado, você pode definir pontos como 0 ou lidar de outra forma
+            pontos = 0
+
     if request.method == 'POST':
         username_atual = request.POST.get('username')  # Obtém o nome de usuário do formulário
         data = request.POST.get('data')  # Obtém a data do formulário
-
-        # Obtém o nome de usuário da sessão
-        username_sessao = request.session.get('username')
 
         # Verifica se o nome de usuário da sessão corresponde ao nome de usuário do formulário
         if username_sessao == username_atual:
@@ -87,7 +99,8 @@ def perfilusu(request):
         else:
             messages.error(request, "O nome de usuário informado não corresponde ao nome de usuário da sessão.")
 
-    return render(request, 'perfilusu.html')  # Redireciona para a página de perfil do usuário
+    # Renderiza o template com a pontuação e outras informações
+    return render(request, 'perfilusu.html', {'pontos': pontos})
 
 def aprovar_reprovar_descarte(request, id_descarte):
     if request.method == 'POST':
