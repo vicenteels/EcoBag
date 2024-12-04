@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from datetime import date
-from django.http.response import HttpResponse
 from .forms import UsuarioModelForm
 from django.contrib import messages
-from .models import Usuario, Descarte
+from .models import Usuario, Descarte, Produto
 
 def index(request):
     return render(request, 'index.html')
@@ -50,19 +48,15 @@ def login(request):
     return render(request, 'login.html')
 
 
-
-# @login_required(login_url='login/')
 def homeusu(request):
-    return render(request, 'homeusu.html')
+    produtos = Produto.objects.all()  # Busca todos os produtos cadastrados
+    return render(request, 'homeusu.html', {'produtos': produtos})
 
-# @login_required(login_url='login/')
 def homecat(request):
     # Filtra os descartes com status 'PENDENTE', ordenados pela data
     descartes_pendentes = Descarte.objects.filter(status_descarte='PENDENTE').order_by('data')
 
     return render(request, 'homecat.html', {'descartes_pendentes': descartes_pendentes})
-
-# @login_required(login_url='login/')
 
 
 def perfilusu(request):

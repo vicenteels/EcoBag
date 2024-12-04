@@ -1,4 +1,5 @@
 from django.db import models
+from stdimage.models import StdImageField
 
 
 TIPO_USUARIO_CHOICES = [
@@ -31,5 +32,12 @@ class Descarte(models.Model):
     def __str__(self):
         return f"{self.nome_usuario} ({self.status_descarte})"
 
+class Produto(models.Model):
+    id_produto = models.AutoField(primary_key=True)
+    nome = models.CharField('Nome de Produto', max_length=255, blank=False)
+    valor_pontos = models.IntegerField('Valor em pontos', blank=False)
+    imagem = StdImageField('Imagem do Produto', variations={'thumb':(124,124)}) 
 
+    def __str__(self):
+        return self.nome
 # Create your models here.

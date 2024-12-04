@@ -217,7 +217,7 @@ nav ul li a:hover {
     display: flex;
 }
 
-.premio-box-icon {
+/* .premio-box-icon {
     height: 100%;
     width: 8%;
     background-color: #ccc14f;
@@ -225,7 +225,7 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     border-radius: 100%;
-}
+} */
 
 #marrom {
     background-color: #6b3e0a;

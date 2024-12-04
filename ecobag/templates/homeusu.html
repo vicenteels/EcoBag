@@ -38,46 +38,22 @@
                         <div class="modal-titulo">
                             <h2>Prêmios Disponíveis</h2>
                         </div>
+                
+                        {% for produto in produtos %}
                         <div class="premio-box">
-                            <div class="premio-box-icon" id="amarelo"><img src="../static/images/icons8-presente-50.png" alt="">
+                            <div class="premio-box-icon">
+                                <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" style="width: 100%; height: auto;">
                             </div>
-                            <div class="premio-box-desc">Cápsulas 3 Corações</div>
-                            <div class="premio-box-botao"><button id="botao-meta"><img src="../static/images/mais.png"
-                                        alt="">Adicionar meta</button></div>
-                        </div>
-
-                        <div class="premio-box">
-                            <div class="premio-box-icon" id="marrom"><img src="../static/images/icons8-presente-50.png" alt="">
+                            <div class="premio-box-desc">{{ produto.nome }}</div>
+                            <div class="premio-box-pontuacao">{{ produto.valor_pontos }}</div>
+                            <div class="premio-box-botao">
+                                <button id="botao-meta">
+                                    <img src="../static/images/mais.png" alt="">Adicionar meta
+                                </button>
                             </div>
-                            <div class="premio-box-desc">Desconto 20% YouCom</div>
-                            <div class="premio-box-botao"><button id="botao-meta"><img src="../static/images/mais.png"
-                                        alt="">Adicionar meta</button></div>
                         </div>
-
-                        <div class="premio-box">
-                            <div class="premio-box-icon" id="verde-escuro"><img src="../static/images/icons8-presente-50.png"
-                                    alt=""></div>
-                            <div class="premio-box-desc">Desconto 5% Fisk</div>
-                            <div class="premio-box-botao"><button id="botao-meta"><img src="../static/images/mais.png"
-                                        alt="">Adicionar meta</button></div>
-                        </div>
-
-                        <div class="premio-box">
-                            <div class="premio-box-icon" id="verde-claro"><img src="../static/images/icons8-presente-50.png"
-                                    alt=""></div>
-                            <div class="premio-box-desc">Vale R$10 Shein</div>
-                            <div class="premio-box-botao"><button id="botao-meta"><img src="../static/images/mais.png"
-                                        alt="">Adicionar meta</button></div>
-                        </div>
-
-                        <div class="premio-box">
-                            <div class="premio-box-icon" id="marrom"><img src="../static/images/icons8-presente-50.png" alt="">
-                            </div>
-                            <div class="premio-box-desc">Vale R$10 Shein</div>
-                            <div class="premio-box-botao"><button id="botao-meta"><img src="../static/images/mais.png"
-                                        alt="">Adicionar meta</button></div>
-                        </div>
-
+                        {% endfor %}
+                
                         <div class="btns">
                             <button class="btnOK" id="botao-modal" onclick="closeModal()">Ok</button>
                             <button class="btnClose" id="botao-modal" onclick="closeModal()">Close</button>
