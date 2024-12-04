@@ -19,11 +19,11 @@
 
     <main>
         {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
                 {% endfor %}
-            </ul>
+        </ul>
         {% endif %}
         <div class="esquerda">
             <div class="saldo-pontos">
@@ -69,38 +69,37 @@
                     <!-- Botão para abrir o modal -->
                     <button onclick="openModal()">Acabei de descartar</button>
                 </div>
-
-                <!-- Modal -->
-                <div id="modal" class="modal-container">
-                    <div class="modal">
-                        <div class="modal-titulo">
-                            <h2>Solicitação de Descarte</h2>
-                        </div>
-                        <div class="solicitacao-box">
-                            <form method="post" action="{% url 'perfilusu' %}">
-                                {% csrf_token %}
-
-                                <div class="inputs">
-                                    <label for="username">Nome de Usuário:</label>
-                                    <input type="text" id="username" name="username" placeholder="Seu apelido usado para login" required>
-                                </div>
-                                
-                                <div class="inputs">
-                                    <label for="data">Data do Descarte:</label>
-                                    <input type="date" id="data" name="data" required>
-                                </div>
-                                
-                                <div class="btns">
-                                    <button type="submit">Enviar Solicitação</button>
-                                    <button class="btnClose" id="botao-modal" onclick="closeModal()">Fechar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+        </div>
 
+        <!-- Modal -->
+        <div id="modal" class="modal-container">
+            <div class="modal">
+                <div class="modal-titulo">
+                    <h2>Solicitação de Descarte</h2>
+                </div>
+                <div class="solicitacao-box">
+                    <form method="post" action="{% url 'perfilusu' %}">
+                        {% csrf_token %}
+
+                        <div class="inputs">
+                            <label for="username">Nome de Usuário:</label>
+                            <input type="text" id="username" name="username" placeholder="Seu apelido usado para login"
+                                required>
+                        </div>
+
+                        <div class="inputs">
+                            <label for="data">Data do Descarte:</label>
+                            <input type="date" id="data" name="data" required>
+                        </div>
+
+                        <div class="btns">
+                            <button type="submit">Enviar</button>
+                            <button class="btnClose" id="botao-modal" onclick="closeModal()">Fechar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
 

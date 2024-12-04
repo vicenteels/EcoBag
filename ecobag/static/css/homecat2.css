@@ -38,8 +38,15 @@ section {
     height: 100%;
     width: 50%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20px;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: 600;
 }
 
 .direita {
@@ -55,3 +62,35 @@ section {
     height: 50%;
 }
 
+
+.tabela-solicitacoes {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: left;
+}
+
+.tabela-solicitacoes th,
+.tabela-solicitacoes td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.tabela-solicitacoes th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.tabela-solicitacoes tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tabela-solicitacoes tr:hover {
+    background-color: #f1f1f1;
+}
+
+.tabela-solicitacoes td {
+    vertical-align: middle;
+}
