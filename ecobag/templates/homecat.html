@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Catador</title>
     <link rel="stylesheet" href="../static/css/homeusu.css">
-    <link rel="stylesheet" href="../static/css/homecat2.css">
+    <link rel="stylesheet" href="../static/css/homecat.css">
 
 </head>
 
@@ -31,6 +31,7 @@
                         <tr>
                             <th>Usuário</th>
                             <th>Data</th>
+                            <th>Estado</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,11 +39,13 @@
                         <tr>
                             <td>{{ descarte.nome_usuario.username }}</td>
                             <td>{{ descarte.data|date:"d/m/Y" }}</td>
-                            <td>
+                            <td id="td-buttons">
                                 <form action="{% url 'aprovar_reprovar_descarte' descarte.id_descarte %}" method="POST">
                                     {% csrf_token %}
-                                    <button type="submit" name="acao" value="aprovar">Aprovar</button>
-                                    <button type="submit" name="acao" value="reprovar">Reprovar</button>
+                                    <button type="submit" name="acao" value="aprovar"
+                                        id="button-aprovar">Aprovar</button>
+                                    <button type="submit" name="acao" value="reprovar"
+                                        id="button-reprovar">Reprovar</button>
                                 </form>
                             </td>
                         </tr>

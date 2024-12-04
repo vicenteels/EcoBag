@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ecobag',
         'USER':  'root',
-        'PASSWORD': 'vicente',
+        'PASSWORD': 'Sophia866',
         'HOST': 'localhost',
         'PORT': '3306',
     }

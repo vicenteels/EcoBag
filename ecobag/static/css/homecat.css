@@ -67,7 +67,7 @@ h1 {
     width: 80%;
     border-collapse: collapse;
     margin-top: 20px;
-    font-family: Arial, sans-serif;
+    font-family: Raleway;
     font-size: 16px;
     text-align: left;
 }
@@ -93,4 +93,32 @@ h1 {
 
 .tabela-solicitacoes td {
     vertical-align: middle;
+}
+
+#button-aprovar {
+    color: #00a274;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+}
+
+#button-aprovar:hover {
+    text-decoration: underline;
+
+}
+
+#button-reprovar {
+    color: #701816;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+}
+
+#button-reprovar:hover {
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    gap: 30px;
 }
