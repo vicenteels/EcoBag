@@ -111,7 +111,7 @@ def aprovar_reprovar_descarte(request, id_descarte):
         descarte.nome_usuario.save()  # Salva as alterações na pontuação do usuário
 
         # Redireciona de volta para a página do catador
-        return redirect('homecat')  # Certifique-se de que 'homecat' é o nome correto da URL
+        return redirect('homecat')  
 
     return redirect('homecat')
 # Create your views here.
