@@ -11,14 +11,14 @@ def cadastro(request):
         form = UsuarioModelForm(request.POST)
         if form.is_valid():
             usuario = form.save(commit=False)
-            usuario.password = usuario.password  # Salve a senha sem encriptar, ou use encriptação se necessário
+            usuario.password = usuario.password
             usuario.save()
             if usuario.tipo_usuario == 'DESCARTADOR':
                 return redirect('homeusu')
             elif usuario.tipo_usuario == 'CATADOR':
                 return redirect('homecat')
         else:
-            messages.error(request, 'Erro ao cadastrar usuário. Verifique os dados informados.')
+            messages.error(request, 'Erro ao cadastrar usuário. Apelido já está em uso.')
     else:
         form = UsuarioModelForm()
 
