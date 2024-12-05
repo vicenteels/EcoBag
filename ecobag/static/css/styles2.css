@@ -88,6 +88,12 @@ nav ul li button {
     padding: 12px 20px 12px 20px;
 }
 
+nav ul li button:hover {
+    background-color: var(--verde);
+    border: 2px solid var(--verde);
+    color: white;
+}
+
 .main {
     height: 55%;
     display: flex;

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Descartador</title>
-    <link rel="stylesheet" href="../static/css/homeusu.css">
+    <link rel="stylesheet" href="../static/css/homeusu2.css">
 </head>
 
 <body>
@@ -38,11 +38,12 @@
                         <div class="modal-titulo">
                             <h2>Prêmios Disponíveis</h2>
                         </div>
-                
+
                         {% for produto in produtos %}
                         <div class="premio-box">
                             <div class="premio-box-icon">
-                                <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" style="width: 100%; height: auto;">
+                                <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}"
+                                    style="width: 100%; height: auto;">
                             </div>
                             <div class="premio-box-desc">{{ produto.nome }}</div>
                             <div class="premio-box-pontuacao">{{ produto.valor_pontos }}</div>
@@ -53,7 +54,7 @@
                             </div>
                         </div>
                         {% endfor %}
-                
+
                         <div class="btns">
                             <button class="btnOK" id="botao-modal" onclick="closeModal()">Ok</button>
                             <button class="btnClose" id="botao-modal" onclick="closeModal()">Close</button>
@@ -98,8 +99,11 @@
                     <div class="section2-box3-parte1">
                         <h2>Horários da coleta seletiva</h2>
                         <div class="horarios-botao">
-                            <div class="icone-calendario"><img src="../static/images/icons8-calendário-50.png" alt=""></div>
-                            <div class="link-botao"><a href="https://xanxere.sc.gov.br/uploads/sites/92/2021/12/867373_roteiro.jpg" target="_blank" rel="noopener noreferrer">Clique para ver</a></div>
+                            <div class="icone-calendario"><img src="../static/images/icons8-calendário-50.png" alt="">
+                            </div>
+                            <div class="link-botao"><a
+                                    href="https://xanxere.sc.gov.br/uploads/sites/92/2021/12/867373_roteiro.jpg"
+                                    target="_blank" rel="noopener noreferrer">Clique para ver</a></div>
                         </div>
                     </div>
                     <div class="section2-box3-parte2">
@@ -111,7 +115,7 @@
         </section>
 
         <section class="section3" id="section3">
-            <h2>Empresas Parceiras</h2>
+            <h2>Apoiadores</h2>
             <div class="box-empresas">
                 <div class="empresa"></div>
                 <div class="empresa"></div>
@@ -125,14 +129,14 @@
 
         <section class="section4" id="section4">
             <h2>Dicas de Reuso</h2>
+
             <div class="carousel">
                 <div class="card">
                     <img src="../static/images/recycle-bin_5543488.png" alt="ícone card">
                     <div class="card-text">
                         <h3>Garrafas como vasos de plantas</h3>
                         <p>Você pode fazer das garrafas de vidro (cervejas ou vinhos), vasos para plantas naturais
-                            ou
-                            artificiais para decorar seu quarto ou sala.</p>
+                            ou artificiais para decorar seu quarto ou sala.</p>
                     </div>
                 </div>
 
@@ -142,7 +146,6 @@
                     <input type="radio" name="slider" id="slide3">
                 </div>
             </div>
-
         </section>
 
         <footer>
