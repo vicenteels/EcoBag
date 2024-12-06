@@ -25,7 +25,7 @@ class Usuario(models.Model):
     
 class Descarte(models.Model):
     id_descarte = models.AutoField(primary_key=True)
-    data = models.DateField()  # Não use auto_now_add aqui, pois estamos definindo a data manualmente
+    data = models.DateField() 
     status_descarte = models.CharField(max_length=10, choices=STATUS_DESCARTE_CHOICES, default='PENDENTE')
     nome_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 
