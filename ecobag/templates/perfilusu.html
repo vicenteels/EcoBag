@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Perfil</title>
 <link rel="stylesheet" href="../static/css/homeusu2.css">
-<link rel="stylesheet" href="../static/css/perfilusu.css">
+<link rel="stylesheet" href="../static/css/perfilusu2.css">
 </head>
 
 <body>
@@ -61,7 +61,13 @@
 
                 <div class="botao-solicitacao">
                     <!-- Botão para abrir o modal -->
-                    <button onclick="openModal()">Acabei de descartar</button>
+                    <div>
+                        <button onclick="openModal()">Acabei de descartar</button>
+                    </div>
+                    <div>
+                        <button onclick="editarDescarte()">Verificar solicitações</button>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -119,6 +125,10 @@
     function sair() {
         console.log('Função sair chamada');
         window.location.href = "../login";
+    }
+
+    function editarDescarte(){
+        window.location.href = "../solicitacoes";
     }
 </script>
 

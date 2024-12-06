@@ -109,4 +109,7 @@ def aprovar_reprovar_descarte(request, id_descarte):
         return redirect('homecat')  
 
     return redirect('homecat')
+
+def solicitacoes(request):
+    return render(request, 'solicitacoes.html')
 # Create your views here.
