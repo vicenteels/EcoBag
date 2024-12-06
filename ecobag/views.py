@@ -10,32 +10,33 @@ def cadastro(request):
     if request.method == 'POST':
         form = UsuarioModelForm(request.POST)
         if form.is_valid():
-            usuario = form.save(commit=False)
-            usuario.password = usuario.password
-            usuario.save()
-            if usuario.tipo_usuario == 'DESCARTADOR':
-                return redirect('homeusu')
-            elif usuario.tipo_usuario == 'CATADOR':
-                return redirect('homecat')
+            usuario = form.save()
+            # usuario.password = usuario.password
+            # usuario.save()
+            return redirect('login')
+            # if usuario.tipo_usuario == 'DESCARTADOR':
+            #     return redirect('homeusu')
+            # elif usuario.tipo_usuario == 'CATADOR':
+            #     return redirect('homecat')
         else:
-            messages.error(request, 'Erro ao cadastrar usuário. Apelido já está em uso.')
+            messages.error(request, 'Erro ao cadastrar usuário. Verfique os dados inseridos.')
     else:
         form = UsuarioModelForm()
 
     form = UsuarioModelForm()
 
-    return render(request, 'cadastro.html', {'form': form})
+    return render(request, 'cadastro.html', {'form': form}) #renderiza o html e passa o form como contexto para ser exibido na página
 
 def login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username') #extrai os valore do formulario
         senha = request.POST.get('senha')
 
         # Autenticação personalizada
-        try:
+        try: #tenta encontrar no banco um usuario com o nome e senha fornecida
             user = Usuario.objects.get(username=username, password=senha)
             # Armazena o username na sessão
-            request.session['username'] = user.username
+            request.session['username'] = user.username #armazena o nome do usuário da sessão para manter o login
 
             if user.tipo_usuario == 'DESCARTADOR':
                 return redirect('homeusu')
@@ -72,7 +73,6 @@ def perfilusu(request):
             usuario = Usuario.objects.get(username=username_sessao)
             pontos = usuario.pontuacao_total  # Obtém a pontuação total do usuário
         except Usuario.DoesNotExist:
-            # Se o usuário não for encontrado, você pode definir pontos como 0 ou lidar de outra forma
             pontos = 0
 
     if request.method == 'POST':
