@@ -23,7 +23,7 @@ def cadastro(request):
 
 def login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username') #captura as informações do login
         senha = request.POST.get('senha')
 
         # Autenticação personalizada
