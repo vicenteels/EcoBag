@@ -4,9 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solicitações Enviadas</title>
+    <link rel="stylesheet" href="../static/css/homeusu2.css">
+    <link rel="stylesheet" href="../static/css/homecat2.css">
+    <link rel="stylesheet" href="../static/css/solicitacoes.css">
 </head>
 <body>
-    <h1>testee</h1>
+    <header>
+        <nav>
+            <ul id="navbar" class="navbar">
+                <li><a href="/homedesc">Home</a></li>
+                <li><button class="botao-sair" type="button" onclick="sair()">Sair</button></li>
+                <li><button class="botao-perfil" type="button" onclick="perfil()">Perfil</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="esquerda">
+                <h1>Solicitações Enviadas</h1>
+                <table class="tabela-solicitacoes">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for descarte in descartes_usuario %}
+                        <tr>
+                            <td>{{ descarte.data|date:"d/m/Y" }}</td>
+                            <td>{{ descarte.status_descarte }}</td>
+                            <td id="td-buttons">
+                                {% if descarte.status_descarte == 'PENDENTE' %}
+                                <form action="{% url 'editar_excluir_descarte' descarte.id_descarte %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="button" onclick="abrirModal('{{ descarte.id_descarte }}')" 
+                                        id="button-editar">Editar</button>
+                                    <button type="submit" name="acao" value="excluir" id="button-excluir">Excluir</button>
+                                </form>
+                                {% else %}
+                                <span>Não disponível</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3">Nenhuma solicitação encontrada.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="direita"><img src="../static/images/logo-vetorizada.png" alt=""></div>
+        </section>
+
+    
+        <!-- Modal para editar -->
+        <!-- Modal para editar -->
+        <div id="modal-editar" class="modal-container" style="display: none;">
+            <div class="modal">
+                <div class="modal-titulo">
+                    <h2>Editar Solicitação de Descarte</h2>
+                </div>
+                <div class="solicitacao-box">
+                    <form id="form-editar" method="POST" action="{% url 'editar_excluir_descarte' 0 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="acao" value="editar" id="button-editar">
+                        <input type="hidden" name="id_descarte" id="id-descarte-modal" >
+                        
+                        <div class="inputs">
+                            <label for="nova_data">DATA DO DESCARTE:</label>
+                            <input type="date" name="nova_data" id="nova_data" required>
+                        </div>
+
+                        <div class="btns">
+                            <button type="submit">Salvar</button>
+                            <button type="button" class="btnClose" id="btnClose" onclick="fecharModal()">Fechar</button>
+                        </div>
+
+                        <div class="mensagem">
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        function abrirModal(idDescarte) {
+            const modal = document.getElementById('modal-editar');
+            const inputId = document.getElementById('id-descarte-modal');
+            const form = document.getElementById('form-editar');
+
+            // Atualiza o ID do descarte no formulário
+            inputId.value = idDescarte;
+
+            // Atualiza a ação do formulário para incluir o ID do descarte
+            form.action = "{% url 'editar_excluir_descarte' 0 %}".replace('0', idDescarte);
+
+            modal.style.display = 'block';
+        }
+    
+        function fecharModal() {
+            const modal = document.getElementById('modal-editar');
+            modal.style.display = 'none';
+        }
+    </script>
+    
     
 </body>
+
+<script>
+    function sair() {
+        console.log('Função sair chamada');
+        window.location.href = "../login";
+    }
+
+    function editarDescarte(){
+        window.location.href = "../solicitacoes";
+    }
+</script>
+
+
+
+<script src="../static/js/home.js"></script>
+
 </html>

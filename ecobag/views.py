@@ -111,5 +111,37 @@ def aprovar_reprovar_descarte(request, id_descarte):
     return redirect('homecat')
 
 def solicitacoes(request):
-    return render(request, 'solicitacoes.html')
+    # Obtém o usuário da sessão
+    username_sessao = request.session.get('username')
+    if not username_sessao:
+        return redirect('login')  # Redireciona para login se o usuário não estiver logado
+
+    # Filtra os descartes do usuário logado
+    descartes_usuario = Descarte.objects.filter(nome_usuario__username=username_sessao).order_by('-id_descarte')
+
+    # Renderiza o template com os descartes associados ao usuário
+    return render(request, 'solicitacoes.html', {'descartes_usuario': descartes_usuario})
+
+def editar_excluir_descarte(request, id_descarte):
+    # Busca o descarte pelo ID
+    descarte = get_object_or_404(Descarte, id_descarte=id_descarte)
+
+    if request.method == 'POST':
+        acao = request.POST.get('acao')
+
+        if acao == 'editar':
+            # Atualiza a data do descarte
+            nova_data = request.POST.get('nova_data')
+            descarte.data = nova_data
+            descarte.save()
+            messages.success(request, 'Data do descarte atualizada com sucesso.')
+
+        elif acao == 'excluir':
+            # Exclui o descarte
+            descarte.delete()
+            messages.success(request, 'Descarte excluído com sucesso.')
+
+    # Redireciona para a página de solicitações
+    return redirect('solicitacoes')
+
 # Create your views here.
