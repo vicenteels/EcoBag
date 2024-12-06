@@ -231,6 +231,8 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
+    gap: 10px;
 }
 
 .botao-solicitacao button {
