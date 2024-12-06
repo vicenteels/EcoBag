@@ -113,8 +113,6 @@ def aprovar_reprovar_descarte(request, id_descarte):
 def solicitacoes(request):
     # Obtém o usuário da sessão
     username_sessao = request.session.get('username')
-    if not username_sessao:
-        return redirect('login')  # Redireciona para login se o usuário não estiver logado
 
     # Filtra os descartes do usuário logado
     descartes_usuario = Descarte.objects.filter(nome_usuario__username=username_sessao).order_by('-id_descarte')
