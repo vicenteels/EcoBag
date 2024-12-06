@@ -10,9 +10,7 @@ def cadastro(request):
     if request.method == 'POST':
         form = UsuarioModelForm(request.POST)
         if form.is_valid():
-            usuario = form.save(commit=False)
-            usuario.password = usuario.password
-            usuario.save()
+            usuario = form.save()
             if usuario.tipo_usuario == 'DESCARTADOR':
                 return redirect('homeusu')
             elif usuario.tipo_usuario == 'CATADOR':
