@@ -10,13 +10,10 @@ def cadastro(request):
     if request.method == 'POST':
         form = UsuarioModelForm(request.POST)
         if form.is_valid():
-            usuario = form.save()
-            if usuario.tipo_usuario == 'DESCARTADOR':
-                return redirect('homeusu')
-            elif usuario.tipo_usuario == 'CATADOR':
-                return redirect('homecat')
+            form.save()
+            return redirect('login')
         else:
-            messages.error(request, 'Erro ao cadastrar usuário. Apelido já está em uso.')
+            messages.error(request, 'Erro ao cadastrar usuário. Verifique os dados.')
     else:
         form = UsuarioModelForm()
 
@@ -89,7 +86,7 @@ def perfilusu(request):
             except Usuario.DoesNotExist:
                 messages.error(request, "Usuário não encontrado.")
         else:
-            messages.error(request, "O nome de usuário informado não corresponde ao nome de usuário da sessão.")
+            messages.error(request, "Verfique o apelido informado.")
 
     # Renderiza o template com a pontuação e outras informações
     return render(request, 'perfilusu.html', {'pontos': pontos})
