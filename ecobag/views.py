@@ -142,4 +142,46 @@ def editar_excluir_descarte(request, id_descarte):
     # Redireciona para a página de solicitações
     return redirect('solicitacoes')
 
+def trocar_pontos(request):
+    usuario_sessao = request.session.get('username')
+    
+    # Obtenha o usuário usando o campo correto 'username'
+    try:
+        usuario = Usuario.objects.get(username=usuario_sessao)
+    except Usuario.DoesNotExist:
+        messages.error(request, 'Usuário não encontrado.')
+        return redirect('homeusu')
+
+    if request.method == 'POST':
+        acao = request.POST.get('acao')
+
+        if acao == 'geracao':
+            pontos = 150
+            if pontos > usuario.pontuacao_total:
+                messages.error(request, 'Saldo de pontos insuficiente')
+            else:
+                usuario.pontuacao_total -= 150
+                usuario.save()
+                messages.success(request, 'Pontos trocados com sucesso!')
+
+        elif acao == 'fisk':
+            pontos = 200
+            if pontos > usuario.pontuacao_total:
+                messages.error(request, 'Saldo de pontos insuficiente')
+            else:
+                usuario.pontuacao_total -= 200
+                usuario.save()
+                messages.success(request, 'Pontos trocados com sucesso!')
+
+        elif acao == 'camelia':
+            pontos = 50
+            if pontos > usuario.pontuacao_total:
+                messages.error(request, 'Saldo de pontos insuficiente')
+            else:
+                usuario.pontuacao_total -= 50
+                usuario.save()
+                messages.success(request, 'Pontos trocados com sucesso!')
+
+    return redirect('homeusu')
+
 # Create your views here.

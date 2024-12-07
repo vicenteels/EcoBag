@@ -39,21 +39,71 @@
                             <h2>Prêmios Disponíveis</h2>
                         </div>
 
-                        {% for produto in produtos %}
                         <div class="premio-box">
-                            <div class="premio-box-icon">
-                                <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}"
-                                    style="width: 45px; height: 45px; border-radius: 100%;">
-                            </div>
-                            <div class="premio-box-desc">{{ produto.nome }}</div>
-                            <div class="premio-box-pontuacao">{{ produto.valor_pontos }}</div>
-                            <div class="premio-box-botao">
-                                <button id="botao-meta">
-                                    <img src="../static/images/mais.png" alt="">Trocar pontos
-                                </button>
-                            </div>
+                            <form action="{% url 'trocar_pontos' %}" method="post">
+                                <div class="premio-box-icon">
+                                    <img src="../static/images/geracao.jpeg" alt="10% OFF - Materiais Escolares Geração"
+                                        style="width: 45px; height: 45px; border-radius: 100%;">
+                                </div>
+                                <div class="premio-box-desc">10% OFF - Materiais Escolares Geração</div>
+                                <div class="premio-box-pontuacao">150</div>
+                                <div class="premio-box-botao">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="acao" value="geracao">
+                                    <button id="botao-meta" type="submit">
+                                        <img src="../static/images/mais.png" alt="">Trocar pontos
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                        {% endfor %}
+
+                        <div class="premio-box">
+                            <form action="{% url 'trocar_pontos' %}" method="post">
+                                <div class="premio-box-icon">
+                                    <img src="../static/images/fisk.jpg" alt="1 Mês GRÁTIS - Fisk Idiomas"
+                                        style="width: 45px; height: 45px; border-radius: 100%;">
+                                </div>
+                                <div class="premio-box-desc">1 Mês GRÁTIS - Fisk Idiomas</div>
+                                <div class="premio-box-pontuacao">200</div>
+                                <div class="premio-box-botao">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="acao" value="fisk">
+                                    <button id="botao-meta" type="submit">
+                                        <img src="../static/images/mais.png" alt="">Trocar pontos
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="premio-box">
+                            <form action="{% url 'trocar_pontos' %}" method="post">
+                                <div class="premio-box-icon">
+                                    <img src="../static/images/camelia_grande.png" alt="Café Camélia Casa das FLores"
+                                        style="width: 45px; height: 45px; border-radius: 100%;">
+                                </div>
+                                <div class="premio-box-desc">Café Camélia Casa das FLores</div>
+                                <div class="premio-box-pontuacao">50</div>
+                                <div class="premio-box-botao">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="acao" value="camelia">
+                                    <button id="botao-meta" type="submit">
+                                        <img src="../static/images/mais.png" alt="">Trocar pontos
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- <div class="mensagem">
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                                    {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div> -->
+                        
+
 
                         <div class="btns">
                             <button class="btnOK" id="botao-modal" onclick="closeModal()">Ok</button>
