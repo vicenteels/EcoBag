@@ -129,6 +129,10 @@ nav ul li a:hover {
     animation: slideIn 3s ease forwards;
 }
 
+.animation1:hover{
+    cursor: pointer;
+}
+
 .section1-text h1 {
     font-size: 45px;
     color: var(--verde);
@@ -306,6 +310,7 @@ nav ul li a:hover {
     border: 2px solid var(--azul_escuro);
     color: var(--azul_escuro);
     font-weight: bold;
+    cursor: pointer;
 }
 
 .active {
