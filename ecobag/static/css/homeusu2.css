@@ -519,33 +519,52 @@ nav ul li a:hover {
 }
 
 .section3 {
-    height: 350px;
+    height: 450px;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
     align-items: center;
 }
 
 .section3 h2 {
+    padding-top: 80px;
+    padding-bottom: 50px;
     font-size: 35px;
 }
 
 .box-empresas {
-    height: 50%;
+    height: 80%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
-    justify-content: center
+    gap: 50px;
+    justify-content: center;
 }
 
 .empresa {
-    height: 50%;
-    width: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+#empresa-geracao {
+    align-items: flex-start;
+}
+
+#empresa-prefeitura {
+    align-items: flex-end;
+}
+
+#prefeitura {
+    height: 60%;
+}
+
+#geracao {
+    height: 60%;
+}
 
 .curve {
     background-color: white;
@@ -568,6 +587,7 @@ nav ul li a:hover {
     font-size: 35px;
     color: white;
     margin-top: 120px;
+    padding-bottom: 30px;
 }
 
 .carousel {
@@ -605,7 +625,7 @@ nav ul li a:hover {
     font-size: 20px;
 }
 
-.card-text p{
+.card-text p {
     font-size: 15px;
 }
 
