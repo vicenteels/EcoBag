@@ -227,7 +227,7 @@ nav ul li a:hover {
 
 }
 
-/* .premio-box-icon {
+.premio-box-icon {
     height: 100%;
     width: 8%;
     background-color: #ccc14f;
@@ -235,7 +235,7 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     border-radius: 100%;
-} */
+}
 
 .premio-box-icon img {
     height: 60%;
