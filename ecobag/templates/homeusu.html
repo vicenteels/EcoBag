@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Descartador</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="../static/css/homeusu2.css">
 </head>
 
@@ -168,9 +167,9 @@
         <section class="section3" id="section3">
             <h2>Apoiadores</h2>
             <div class="box-empresas">
-                <div class="empresa"></div>
-                <div class="empresa"></div>
-                <div class="empresa"></div>
+                <div class="empresa"><img src="../static/images/logo-prefeitura.png" alt="logo prefeitura xanxerê" height="70px"></div>
+                <div class="empresa"><img src="../static/images/geracao.jpeg" alt="logo geração" height="90px"></div>
+                <!-- <div class="empresa"></div> -->
             </div>
 
         </section>
@@ -180,18 +179,22 @@
         <section class="section4" id="section4">
             <h2>Dicas de Reuso</h2>
 
-            <div class="swiper mySwiper container">
-                <!-- Elemento que conterá os cards -->
-                <div class="swiper-wrapper content" id="card-container">
-                    <!-- Os cards serão gerados dinamicamente aqui -->
+            <div class="carousel">
+                <div class="card">
+                    <img src="../static/images/recycle-bin_5543488.png" alt="ícone card">
+                    <div class="card-text">
+                        <h3>Garrafas como vasos de plantas</h3>
+                        <p>Você pode fazer das garrafas de vidro (cervejas ou vinhos), vasos para plantas naturais
+                            ou artificiais para decorar seu quarto ou sala.</p>
+                    </div>
+                </div>
+
+                <div class="nav-bullets">
+                    <input type="radio" name="slider" id="slide1" checked>
+                    <input type="radio" name="slider" id="slide2">
+                    <input type="radio" name="slider" id="slide3">
                 </div>
             </div>
-
-            <!-- Botões de navegação do Swiper -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <!-- Paginação do Swiper -->
-            <div class="swiper-pagination"></div>
         </section>
 
         <footer>
@@ -207,86 +210,7 @@
         window.location.href = "../login";
     }
 
-    // Dados dos cards (imagem, nome e profissão)
-    const cardData = [
-        {
-            imagem: "../static/images/recycle-bin_5543488.png",
-            nome: "A",
-            descricao: "A",
-        },
-        {
-            imagem: "images/istockphoto-954305374-612x612.jpg",
-            nome: "B",
-            descricao: "B",
-        },
-        {
-            imagem: "images/istockphoto-954305374-612x612.jpg",
-            nome: "C",
-            descricao: "C",
-        },
-        {
-            imagem: "images/istockphoto-954305374-612x612.jpg",
-            nome: "D",
-            descricao: "D",
-        },
-    ];
-
-    function createCard(data) {
-        const card = document.createElement("a");
-        card.className = "swiper-slide card";
-        card.innerHTML = `
-      <div class="card-content">
-        <div class="imagem">
-          <img src="${data.imagem}" alt="Imagem" />
-        </div>
-        <div class="dados">
-          <span class="nome">${data.nome}</span>
-          <span class="descricao">${data.descricao}</span>
-        </div>
-      </div>
-    `;
-        return card;
-    }
-
-
-    const cardContainer = document.getElementById("card-container");
-    cardData.forEach((data) => {
-        const card = createCard(data);
-        cardContainer.appendChild(card);
-    });
-
-    var swiper = new Swiper(".mySwiper", {
-        spaceBetween: 30, // Espaço entre os slides
-        grabCursor: true, // Mostra um cursor de "mão" ao passar o mouse
-        loop: true, // Ativa o looping infinito dos slides
-
-        pagination: {
-            el: ".swiper-pagination", // Seletor do elemento de paginação
-            clickable: true, // Permite clicar nos indicadores de paginação
-        },
-
-        // Configura os botões próximo e anterior
-        navigation: {
-            nextEl: ".swiper-button-next", // Botão de próximo
-            prevEl: ".swiper-button-prev", // Botão de anterior
-        },
-
-        // Configurações de responsividade
-        breakpoints: {
-            0: {
-                slidesPerView: 1, // Mostra 1 slide em telas pequenas
-            },
-            768: {
-                slidesPerView: 2, // Mostra 2 slides em telas médias
-            },
-            1024: {
-                slidesPerView: 3, // Mostra 3 slides em telas grandes
-            },
-        },
-    });
 </script>
-
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script src="../static/js/home.js"></script>
 
