@@ -110,3 +110,7 @@
 #button-excluir:hover {
     text-decoration: underline;
 }
+
+.navbar {
+    width: 40%;
+}
