@@ -56,7 +56,7 @@ Siga os passos abaixo para rodar o projeto na sua máquina:
 
 ### 1. Clone o repositório
 ```bash
-git clone https://github.com/sofii4/ecobag.git
+git clone https://github.com/vicenteels/ecobag.git
 
 cd ecobag
 ```
@@ -91,6 +91,7 @@ Crie um arquivo chamado `.env` na raiz do projeto e adicione o seguinte conteúd
 ```env
 SECRET_KEY=sua_chave_secreta_aqui
 DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
 # Caso vá usar MySQL, adicione as variáveis abaixo (opcional)
 # DB_NAME=ecobag
 # DB_USER=root
@@ -124,6 +125,45 @@ python manage.py runserver
 ```
 
 O projeto estará acessível em: http://127.0.0.1:8000/
+
+## 📦 Arquivos Estáticos (static) em Produção (DEBUG=False)
+
+Este projeto usa **WhiteNoise** para servir arquivos estáticos quando `DEBUG=False`.
+
+### Estrutura esperada
+- Arquivos fonte (no app): `ecobag/static/` (ex.: `ecobag/static/css/`, `ecobag/static/images/`, `ecobag/static/js/`)
+- Saída do `collectstatic` (produção): `staticfiles/` (gerado automaticamente)
+
+### Passo obrigatório em produção
+Sempre rode o `collectstatic` antes de iniciar o servidor de produção:
+
+```bash
+python manage.py collectstatic --noinput
+```
+
+### Templates (importante)
+Nos templates Django, **não** use caminhos relativos como `../static/...`.
+Use sempre:
+
+```html
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+```
+
+### Como testar se o static está funcionando
+1. Verificar se o Django encontra o arquivo:
+   ```bash
+   python manage.py findstatic css/cadastro.css --verbosity 2
+   ```
+2. Abrir a página e inspecionar a URL gerada pelo `{% static %}` (em produção ela pode sair com hash, ex.: `cadastro.<hash>.css`).
+3. Acessar a URL `/static/...` no navegador:
+   - Se retornar **HTML**, você está recebendo um 404/redirect e o navegador vai acusar erro de MIME (`text/html`).
+   - Se retornar o arquivo, o `Content-Type` deve ser `text/css` (CSS), `application/javascript` (JS), etc.
+
+### Sobre `staticfiles/`
+A pasta `staticfiles/` é gerada pelo Django e está no `.gitignore`. Em produção, ela deve existir no servidor após o `collectstatic`.
+
+> Observação: arquivos de `media/` (uploads) não são servidos automaticamente com `DEBUG=False`. Em produção, configure seu servidor web (Nginx/Apache/IIS) para servir `MEDIA_ROOT` em `MEDIA_URL`.
 
 ## 📌 Nota sobre o Banco de Dados (MySQL | SQLite)
 
