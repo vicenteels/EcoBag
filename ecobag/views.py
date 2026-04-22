@@ -184,4 +184,3 @@ def trocar_pontos(request):
 
     return redirect('homeusu')
 
-# Create your views here.

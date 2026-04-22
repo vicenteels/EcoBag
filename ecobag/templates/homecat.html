@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Catador</title>
-    <link rel="stylesheet" href="../static/css/homeusu2.css">
-    <link rel="stylesheet" href="../static/css/homecat2.css">
-
+    <link rel="stylesheet" href="../static/css/homeusu.css">
+    <link rel="stylesheet" href="../static/css/homecat.css">
 </head>
 
 <body>
@@ -120,21 +119,46 @@
 
         <section class="section4" id="section4">
             <h2>Dicas de Reuso</h2>
-
+        
             <div class="carousel">
-                <div class="card">
-                    <img src="../static/images/recycle-bin_5543488.png" alt="ícone card">
-                    <div class="card-text">
-                        <h3>Garrafas como vasos de plantas</h3>
-                        <p>Você pode fazer das garrafas de vidro (cervejas ou vinhos), vasos para plantas naturais
-                            ou artificiais para decorar seu quarto ou sala.</p>
+                <!-- inputs ficam antes das cards para permitir o seletor ~ -->
+                <input type="radio" name="slider" id="slide1" checked>
+                <input type="radio" name="slider" id="slide2">
+                <input type="radio" name="slider" id="slide3">
+        
+                <div class="cards">
+                    <div class="card card1">
+                        <img src="../static/images/recycle-bin_5543488.png" alt="ícone card">
+                        <div class="card-text">
+                            <h3>Garrafas como vasos de plantas</h3>
+                            <p>Transforme garrafas de vidro em vasos para plantas naturais ou artificiais — simples e
+                                sustentável.</p>
+                        </div>
+                    </div>
+        
+                    <div class="card card2">
+                        <img src="../static/images/recycle-bin_5543488.png" alt="ícone plástico">
+                        <div class="card-text">
+                            <h3>Recorte e decore com plástico PET</h3>
+                            <p>Use PET limpo para criar organizadores, luminárias e itens decorativos. Lave e seque antes de
+                                reutilizar.</p>
+                        </div>
+                    </div>
+        
+                    <div class="card card3">
+                        <img src="../static/images/recycle-bin_5543488.png" alt="ícone papel">
+                        <div class="card-text">
+                            <h3>Jornais e papéis: embrulhos e artesanato</h3>
+                            <p>Papéis e jornais velhos podem virar embalagens e artefatos artesanais — uma alternativa criativa
+                                ao descartável.</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="nav-bullets">
-                    <input type="radio" name="slider" id="slide1" checked>
-                    <input type="radio" name="slider" id="slide2">
-                    <input type="radio" name="slider" id="slide3">
+        
+                <div class="bullets" role="tablist" aria-label="Navegar dicas">
+                    <label for="slide1" class="bullet" title="Dica 1" aria-controls="slide1"></label>
+                    <label for="slide2" class="bullet" title="Dica 2" aria-controls="slide2"></label>
+                    <label for="slide3" class="bullet" title="Dica 3" aria-controls="slide3"></label>
                 </div>
             </div>
         </section>

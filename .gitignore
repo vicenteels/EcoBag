@@ -1,0 +1,19 @@
+# Python e Django
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite3
+db.sqlite3
+
+# Variáveis de ambiente 
+.env
+.env.local
+
+# Ambiente Virtual
+venv/
+env/
+.venv/
+
+# Logs e outros
+*.log
+.DS_Store

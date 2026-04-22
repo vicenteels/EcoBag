@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Raleway", sans-serif;
+    --verde: #00a274;
+    --azul_escuro: #012241;
+    --rosa: #febfcc;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+@keyframes animate-background {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+body {
+    display: flex;
+    background: linear-gradient(to right, #3AD5DF, #2CE392, #44D7E4);
+    background-size: 400%, 400%;
+    animation: animate-background 10s infinite ease-in-out;
+    animation: animate-background 15s infinite ease-in-out;
+}
+
+main {
+    background-color: white;
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    animation: slideIn 1s ease-out;
+    box-shadow: 5px 0px 70px -33px rgba(0, 0, 0, 0.75);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+main h1 {
+    font-weight: 500;
+    font-size: 30px;
+}
+
+form {
+    height: 80%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0px 40px 0px 40px;
+    justify-content: center;
+}
+
+.box-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+}
+
+.box-input input,
+select {
+    border-radius: 25px;
+    background-color: rgb(231, 230, 230);
+    border: 0;
+    height: 50px;
+    padding-left: 10px;
+    padding-left: 20px;
+}
+
+.box-input select {
+    padding-right: 20px;
+}
+
+.box-input label {
+    padding-left: 15px;
+}
+
+#tipo_usuario {
+    /* esconder seta nativa e usar uma seta customizável */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 42px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'><path fill='%23012241' d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 20px;
+}
+
+/* esconder seta nativa em navegadores antigos/IE */
+select::-ms-expand {
+    display: none;
+}
+
+.box-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    gap: 30px;
+    padding-top: 20px;
+}
+
+button {
+    height: 50px;
+    background-color: var(--verde);
+    border: 0;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: white;
+    border: 2px solid var(--verde);
+    color: #00a274;
+}
+
+#submit {
+    background-color: #012241
+}
+
+#submit:hover {
+    background-color: white;
+    border: 2px solid var(--azul_escuro);
+    color: var(--azul_escuro);
+}
+
+section {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section img {
+    height: 55%;
+}
+
+
+/* Responsividade para tablets e telas menores */
+@media (max-width: 1024px) {
+    main {
+        width: 50%;
+    }
+
+    section {
+        width: 50%;
+    }
+
+    section img {
+        height: 50%;
+    }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    main {
+        width: 100%;
+        height: 60%;
+        box-shadow: 0px 5px 70px -33px rgba(0, 0, 0, 0.75);
+    }
+
+    section {
+        width: 100%;
+        height: 40%;
+    }
+
+    section img {
+        height: 80%;
+        max-width: 90%;
+    }
+
+    form {
+        width: 85%;
+        gap: 20px;
+        padding: 0px 20px;
+    }
+
+    main h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .box-input input,
+    select {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    button {
+        height: 45px;
+        font-size: 14px;
+    }
+}
+
+/* Responsividade extra para celulares pequenos */
+@media (max-width: 480px) {
+    main {
+        height: 55%;
+    }
+
+    section {
+        height: 45%;
+    }
+
+    main h1 {
+        font-size: 20px;
+    }
+
+    form {
+        width: 90%;
+        gap: 15px;
+        padding: 0px 15px;
+    }
+
+    .box-input label {
+        font-size: 14px;
+    }
+
+    .box-input input,
+    select {
+        height: 40px;
+        font-size: 13px;
+        padding-left: 15px;
+    }
+
+    #tipo_usuario {
+        padding-right: 35px;
+        background-size: 16px;
+    }
+
+    button {
+        height: 40px;
+        font-size: 13px;
+    }
+
+    .box-buttons {
+        gap: 15px;
+        padding-top: 10px;
+    }
+}

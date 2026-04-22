@@ -17,4 +17,3 @@ class ProdutoAdmin(admin.ModelAdmin):
     list_display = ('id_produto', 'nome', 'valor_pontos', 'imagem')
 
 
-# Register your models here.
