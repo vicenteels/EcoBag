@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="../static/css/cadastro.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
 </head>
 
 <body>
@@ -49,7 +49,7 @@
     </main>
 
     <section>
-        <img src="../static/images/logo-vetorizada.png" alt="">
+        <img src="{% static 'images/logo-vetorizada.png' %}" alt="">
     </section>
 </body>
 

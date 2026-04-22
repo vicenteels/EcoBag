@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Catador</title>
-    <link rel="stylesheet" href="../static/css/homeusu.css">
-    <link rel="stylesheet" href="../static/css/homecat.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homeusu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/homecat.css' %}">
 </head>
 
 <body>
@@ -58,7 +59,7 @@
                 </table>
             </div>
 
-            <div class="direita"><img src="../static/images/logo-vetorizada.png" alt=""></div>
+            <div class="direita"><img src="{% static 'images/logo-vetorizada.png' %}" alt=""></div>
         </section>
 
         <section class="section2" id="section2">
@@ -76,12 +77,12 @@
                 <div class="section2-box2" id="section2-box2">
                     <h2>Quais materiais posso descartar?</h2>
                     <div class="box-materiais">
-                        <img src="../static/images/plastico.png" alt="">
-                        <img src="../static/images/papel.png" alt="">
-                        <img src="../static/images/papelao.png" alt="">
-                        <img src="../static/images/vidro.png" alt="">
-                        <img src="../static/images/metal.png" alt="">
-                        <img src="../static/images/madeira.png" alt="">
+                        <img src="{% static 'images/plastico.png' %}" alt="">
+                        <img src="{% static 'images/papel.png' %}" alt="">
+                        <img src="{% static 'images/papelao.png' %}" alt="">
+                        <img src="{% static 'images/vidro.png' %}" alt="">
+                        <img src="{% static 'images/metal.png' %}" alt="">
+                        <img src="{% static 'images/madeira.png' %}" alt="">
                     </div>
                 </div>
             </div>
@@ -91,7 +92,7 @@
                     <div class="section2-box3-parte1">
                         <h2>Horários da coleta seletiva</h2>
                         <div class="horarios-botao">
-                            <div class="icone-calendario"><img src="../static/images/icons8-calendário-50.png" alt="">
+                            <div class="icone-calendario"><img src="{% static 'images/icons8-calendário-50.png' %}" alt="">
                             </div>
                             <div class="link-botao"><a
                                     href="https://xanxere.sc.gov.br/uploads/sites/92/2021/12/867373_roteiro.jpg"
@@ -99,7 +100,7 @@
                         </div>
                     </div>
                     <div class="section2-box3-parte2">
-                        <img src="../static/images/calendario_quadro3.png" alt="">
+                        <img src="{% static 'images/calendario_quadro3.png' %}" alt="">
                     </div>
                 </div>
             </div>
@@ -109,8 +110,8 @@
         <section class="section3" id="section3">
             <h2>Apoiadores</h2>
             <div class="box-empresas">
-                <div class="empresa"><img src="../static/images/logo-prefeitura.png" alt="logo prefeitura xanxerê" height="70px"></div>
-                <div class="empresa"><img src="../static/images/geracao.jpeg" alt="logo geração" height="90px"></div>
+                <div class="empresa"><img src="{% static 'images/logo-prefeitura.png' %}" alt="logo prefeitura xanxerê" height="70px"></div>
+                <div class="empresa"><img src="{% static 'images/geracao.jpeg' %}" alt="logo geração" height="90px"></div>
             </div>
 
         </section>
@@ -128,7 +129,7 @@
         
                 <div class="cards">
                     <div class="card card1">
-                        <img src="../static/images/recycle-bin_5543488.png" alt="ícone card">
+                        <img src="{% static 'images/recycle-bin_5543488.png' %}" alt="ícone card">
                         <div class="card-text">
                             <h3>Garrafas como vasos de plantas</h3>
                             <p>Transforme garrafas de vidro em vasos para plantas naturais ou artificiais — simples e
@@ -137,7 +138,7 @@
                     </div>
         
                     <div class="card card2">
-                        <img src="../static/images/recycle-bin_5543488.png" alt="ícone plástico">
+                        <img src="{% static 'images/recycle-bin_5543488.png' %}" alt="ícone plástico">
                         <div class="card-text">
                             <h3>Recorte e decore com plástico PET</h3>
                             <p>Use PET limpo para criar organizadores, luminárias e itens decorativos. Lave e seque antes de
@@ -146,7 +147,7 @@
                     </div>
         
                     <div class="card card3">
-                        <img src="../static/images/recycle-bin_5543488.png" alt="ícone papel">
+                        <img src="{% static 'images/recycle-bin_5543488.png' %}" alt="ícone papel">
                         <div class="card-text">
                             <h3>Jornais e papéis: embrulhos e artesanato</h3>
                             <p>Papéis e jornais velhos podem virar embalagens e artefatos artesanais — uma alternativa criativa

@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecobag</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
 
     <header>
         <div class="logoeco">
-            <img src="../static/images/logo-vetorizada.png" alt="logo ecobag">
+            <img src="{% static 'images/logo-vetorizada.png' %}" alt="logo ecobag">
         </div>
         <nav>
             <ul>
@@ -24,7 +25,7 @@
 
     <main class="main">
         <div class="main-col1">
-            <img src="../static/images/tablet-telainicial].png" alt="tablet" height="800px">
+            <img src="{% static 'images/tablet-telainicial].png' %}" alt="tablet" height="800px">
         </div>
         <div class="main-col2">
             <h1 id="tit_topo">Transforme</h1>

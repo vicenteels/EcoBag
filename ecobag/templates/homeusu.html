@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Descartador</title>
-    <link rel="stylesheet" href="../static/css/homeusu.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homeusu.css' %}">
 </head>
 
 <body>
@@ -42,7 +43,7 @@
                         <div class="premio-box">
                             <form action="{% url 'trocar_pontos' %}" method="post">
                                 <div class="premio-box-icon">
-                                    <img src="../static/images/geracao.jpeg" alt="10% OFF - Materiais Escolares Geração"
+                                    <img src="{% static 'images/geracao.jpeg' %}" alt="10% OFF - Materiais Escolares Geração"
                                         style="width: 45px; height: 45px; border-radius: 100%;">
                                 </div>
                                 <div class="premio-box-desc">Kit Material Escolar - Geração</div>
@@ -51,7 +52,7 @@
                                     {% csrf_token %}
                                     <input type="hidden" name="acao" value="geracao">
                                     <button id="botao-meta" type="submit">
-                                        <img src="../static/images/mais.png" alt="">Trocar pontos
+                                        <img src="{% static 'images/mais.png' %}" alt="">Trocar pontos
                                     </button>
                                 </div>
                             </form>
@@ -60,7 +61,7 @@
                         <div class="premio-box">
                             <form action="{% url 'trocar_pontos' %}" method="post">
                                 <div class="premio-box-icon">
-                                    <img src="../static/images/geracao.jpeg" alt="1 Mês GRÁTIS - Fisk Idiomas"
+                                    <img src="{% static 'images/geracao.jpeg' %}" alt="1 Mês GRÁTIS - Fisk Idiomas"
                                         style="width: 45px; height: 45px; border-radius: 100%;">
                                 </div>
                                 <div class="premio-box-desc">10% Off - Geração</div>
@@ -69,7 +70,7 @@
                                     {% csrf_token %}
                                     <input type="hidden" name="acao" value="fisk">
                                     <button id="botao-meta" type="submit">
-                                        <img src="../static/images/mais.png" alt="">Trocar pontos
+                                        <img src="{% static 'images/mais.png' %}" alt="">Trocar pontos
                                     </button>
                                 </div>
                             </form>
@@ -78,7 +79,7 @@
                         <div class="premio-box">
                             <form action="{% url 'trocar_pontos' %}" method="post">
                                 <div class="premio-box-icon">
-                                    <img src="../static/images/geracao.jpeg" alt="Café Camélia Casa das FLores"
+                                    <img src="{% static 'images/geracao.jpeg' %}" alt="Café Camélia Casa das FLores"
                                         style="width: 45px; height: 45px; border-radius: 100%;">
                                 </div>
                                 <div class="premio-box-desc">Kit Canetas - Geração</div>
@@ -87,7 +88,7 @@
                                     {% csrf_token %}
                                     <input type="hidden" name="acao" value="camelia">
                                     <button id="botao-meta" type="submit">
-                                        <img src="../static/images/mais.png" alt="">Trocar pontos
+                                        <img src="{% static 'images/mais.png' %}" alt="">Trocar pontos
                                     </button>
                                 </div>
                             </form>
@@ -114,7 +115,7 @@
             </div>
 
             <div class="section1-icon">
-                <img src="../static/images/caixa-de-presente.png" alt="">
+                <img src="{% static 'images/caixa-de-presente.png' %}" alt="">
             </div>
 
         </section>
@@ -134,12 +135,12 @@
                 <div class="section2-box2" id="section2-box2">
                     <h2>Quais materiais posso descartar?</h2>
                     <div class="box-materiais">
-                        <img src="../static/images/plastico.png" alt="">
-                        <img src="../static/images/papel.png" alt="">
-                        <img src="../static/images/papelao.png" alt="">
-                        <img src="../static/images/vidro.png" alt="">
-                        <img src="../static/images/metal.png" alt="">
-                        <img src="../static/images/madeira.png" alt="">
+                        <img src="{% static 'images/plastico.png' %}" alt="">
+                        <img src="{% static 'images/papel.png' %}" alt="">
+                        <img src="{% static 'images/papelao.png' %}" alt="">
+                        <img src="{% static 'images/vidro.png' %}" alt="">
+                        <img src="{% static 'images/metal.png' %}" alt="">
+                        <img src="{% static 'images/madeira.png' %}" alt="">
                     </div>
                 </div>
             </div>
@@ -149,7 +150,7 @@
                     <div class="section2-box3-parte1">
                         <h2>Horários da coleta seletiva</h2>
                         <div class="horarios-botao">
-                            <div class="icone-calendario"><img src="../static/images/icons8-calendário-50.png" alt="">
+                            <div class="icone-calendario"><img src="{% static 'images/icons8-calendário-50.png' %}" alt="">
                             </div>
                             <div class="link-botao"><a
                                     href="https://xanxere.sc.gov.br/uploads/sites/92/2021/12/867373_roteiro.jpg"
@@ -157,7 +158,7 @@
                         </div>
                     </div>
                     <div class="section2-box3-parte2">
-                        <img src="../static/images/calendario_quadro3.png" alt="">
+                        <img src="{% static 'images/calendario_quadro3.png' %}" alt="">
                     </div>
                 </div>
             </div>
@@ -167,9 +168,9 @@
         <section class="section3" id="section3">
             <h2>Apoiadores</h2>
             <div class="box-empresas">
-                <div class="empresa" id="empresa-prefeitura"><img src="../static/images/logo-prefeitura.png" alt=""
+                <div class="empresa" id="empresa-prefeitura"><img src="{% static 'images/logo-prefeitura.png' %}" alt=""
                         id="prefeitura"></div>
-                <div class="empresa" id="empresa-geracao"><img src="../static/images/geracao.jpeg" alt="" id="geracao">
+                <div class="empresa" id="empresa-geracao"><img src="{% static 'images/geracao.jpeg' %}" alt="" id="geracao">
                 </div>
             </div>
         </section>
@@ -187,7 +188,7 @@
         
                 <div class="cards">
                     <div class="card card1">
-                        <img src="../static/images/recycle-bin_5543488.png" alt="ícone card">
+                        <img src="{% static 'images/recycle-bin_5543488.png' %}" alt="ícone card">
                         <div class="card-text">
                             <h3>Garrafas como vasos de plantas</h3>
                             <p>Transforme garrafas de vidro em vasos para plantas naturais ou artificiais — simples e
@@ -196,7 +197,7 @@
                     </div>
         
                     <div class="card card2">
-                        <img src="../static/images/recycle-bin_5543488.png" alt="ícone plástico">
+                        <img src="{% static 'images/recycle-bin_5543488.png' %}" alt="ícone plástico">
                         <div class="card-text">
                             <h3>Recorte e decore com plástico PET</h3>
                             <p>Use PET limpo para criar organizadores, luminárias e itens decorativos. Lave e seque antes de
@@ -205,7 +206,7 @@
                     </div>
         
                     <div class="card card3">
-                        <img src="../static/images/recycle-bin_5543488.png" alt="ícone papel">
+                        <img src="{% static 'images/recycle-bin_5543488.png' %}" alt="ícone papel">
                         <div class="card-text">
                             <h3>Jornais e papéis: embrulhos e artesanato</h3>
                             <p>Papéis e jornais velhos podem virar embalagens e artefatos artesanais — uma alternativa criativa
@@ -237,6 +238,6 @@
 
 </script>
 
-<script src="../static/js/home.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
 
 </html>

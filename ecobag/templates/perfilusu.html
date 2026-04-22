@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perfil</title>
-<link rel="stylesheet" href="../static/css/homeusu2.css">
-<link rel="stylesheet" href="../static/css/perfilusu3.css">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homeusu2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/perfilusu3.css' %}">
 </head>
 
 <body>
@@ -25,7 +27,7 @@
                 <h2 id="pontos" class="animacao-festa">{{ pontos }}</h2>
             </div>
             <div class="etiqueta">
-                <a href=""><img src="../static/images/App Prototype.png" alt=""></a>
+                <a href=""><img src="{% static 'images/App Prototype.png' %}" alt=""></a>
             </div>
         </div>
 
@@ -36,7 +38,7 @@
                 </div>
 
                 <div class="premio-box">
-                    <div class="premio-box-icon" id="amarelo"><img src="../static/images/icons8-presente-50.png" alt="">
+                    <div class="premio-box-icon" id="amarelo"><img src="{% static 'images/icons8-presente-50.png' %}" alt="">
                     </div>
                     <div class="premio-box-desc">Cápsulas 3 Corações</div>
                 </div>
@@ -44,7 +46,7 @@
                 <div class="linha"></div>
 
                 <div class="premio-box">
-                    <div class="premio-box-icon" id="marrom"><img src="../static/images/icons8-presente-50.png" alt="">
+                    <div class="premio-box-icon" id="marrom"><img src="{% static 'images/icons8-presente-50.png' %}" alt="">
                     </div>
                     <div class="premio-box-desc">Desconto 20% YouCom</div>
                 </div>
@@ -52,7 +54,7 @@
                 <div class="linha"></div>
 
                 <div class="premio-box">
-                    <div class="premio-box-icon" id="verde-escuro"><img src="../static/images/icons8-presente-50.png"
+                    <div class="premio-box-icon" id="verde-escuro"><img src="{% static 'images/icons8-presente-50.png' %}"
                             alt=""></div>
                     <div class="premio-box-desc">Desconto 5% Fisk</div>
                 </div>
@@ -130,6 +132,6 @@
 
 
 
-<script src="../static/js/home.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
 
 </html>
